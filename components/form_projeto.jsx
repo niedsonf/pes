@@ -2,7 +2,6 @@
 
 import { MainContext } from "@/contexts/main_context";
 import { useContext } from "react";
-import { useRouter } from "next/navigation";
 import { useForm } from 'react-hook-form'
 import { toast } from "react-hot-toast";
 import { Toaster } from "react-hot-toast";
@@ -11,7 +10,6 @@ export default function FormProjeto() {
 
     const { state, dispatch } = useContext(MainContext)
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
-    const router = useRouter()
 
     const onSubmit = (data) => {
         dispatch({

@@ -1,8 +1,8 @@
 'use client'
 
 import { useContext } from "react"
-import Projeto from "./projeto"
 import { MainContext } from "@/contexts/main_context"
+import {Projeto}  from "@/components/Projeto"
 export default function Projetos() {
 
     const { state } = useContext(MainContext)
@@ -13,7 +13,7 @@ export default function Projetos() {
 
             <div className="flex flex-col gap-8">
                 {state.projetos.map((item, index) => {
-                    return <Projeto key={index} data={item} />
+                    return <Projeto.Root key={index} data={item} />
                 })}
             </div>
         </div>

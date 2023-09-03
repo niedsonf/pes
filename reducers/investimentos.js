@@ -1,12 +1,12 @@
 export const initialInvestimentos = [
     {
-        projeto: '',
-        descricao: '',
-        data: '',
+        projeto: 'Projeto 1',
+        data: '02/09/2023',
+        descricao: 'Descrição do projeto 1',
         despesas: {
-            pessoal: 0,
-            material: 0,
-            diarias: 0
+            material: 120,
+            pessoal: 300,
+            diarias: 500
         }
     }
 ]
