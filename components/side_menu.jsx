@@ -1,61 +1,87 @@
 'use client'
 
-import { MainContext } from '@/contexts/main_context';
-import { FilePlus2 } from 'lucide-react';
-import { FileStack } from 'lucide-react';
-import { BadgeDollarSign } from 'lucide-react';
+import { CircleDollarSign } from 'lucide-react';
+import { ArrowLeftRight } from 'lucide-react';
+import { PackagePlus } from 'lucide-react';
+import { UserPlus } from 'lucide-react';
+import { LineChart } from 'lucide-react';
+import { PackageSearch } from 'lucide-react';
+import { ShoppingCart } from 'lucide-react';
+import { Undo2 } from 'lucide-react';
 import Link from 'next/link'
-import { useContext } from 'react';
 
 export default function SideMenu() {
 
-    const { state } = useContext(MainContext)
-
-    const getMenuProps = () => {
-        switch (state.user.cargo) {
-            case 'admin':
-                return [
-                    {
-                        name: 'Projetos',
-                        icon: <FileStack height={18} />,
-                        href: '/projetos'
-                    },
-                    {
-                        name: 'Cadastrar projeto',
-                        icon: <FilePlus2 height={18} />,
-                        href: '/cadastrar'
-                    },
-                ]
-            default:
-                return [
-                    {
-                        name: 'Projetos',
-                        icon: <FileStack height={18} />,
-                        href: '/projetos'
-                    },
-                    {
-                        name: 'Meus investimentos',
-                        icon: <BadgeDollarSign height={18} />,
-                        href: '/investimentos'
-                    },
-                    {
-                        name: 'Cadastrar projeto',
-                        icon: <FilePlus2 height={18} />,
-                        href: '/cadastrar'
-                    },
-                ]
+    const Tabs = {
+        LucroMensal: {
+            text: 'Lucro Mensal',
+            icon: <CircleDollarSign height={20} width={20} />,
+            href: '/lucro_mensal'
+        },
+        GiroEstoque: {
+            text: 'Giro de Estoque',
+            icon: <LineChart height={20} width={20} />,
+            href: '/giro_estoque'
+        },
+        RegistrarTroca: {
+            text: 'Registrar Troca',
+            icon: <ArrowLeftRight height={20} width={20} />,
+            href: '/registrar_troca'
+        },
+        CadastrarProduto: {
+            text: 'Cadastrar Produto',
+            icon: <PackagePlus height={20} width={20} />,
+            href: '/cadastrar_produto'
+        },
+        BuscarCompra: {
+            text: 'Buscar Compra',
+            icon: <PackageSearch height={20} width={20} />,
+            href: '/buscar_compra'
+        },
+        CadastrarFornecedor: {
+            text: 'Cadastrar Fornecedor',
+            icon: <UserPlus height={20} width={20} />,
+            href: '/cadastrar_fornecedor'
+        },
+        CadastrarCompra: {
+            text: 'Cadastrar Compra',
+            icon: <ShoppingCart height={20} width={20} />,
+            href: '/cadastrar_compra'
+        },
+        RegistrarDevolucao: {
+            text: 'Registrar Devolução',
+            icon: <Undo2 height={20} width={20} />,
+            href: '/registrar_devolucao'
         }
     }
 
-    return <aside className="bg-slate-100 w-72 px-4 py-8 border-r border-gray-400">
-        <nav className='flex flex-col gap-4'>
-            {getMenuProps().map((item, index) => {
-                return <Link key={index} className={`text-sm flex align-middle gap-3 text-gray-800 rounded px-2 py-2 hover:text-blue-600 active:text-blue-600 transition duration-200`}
-                    href={item.href}>
-                    {item.icon}
-                    {item.name}
-                </Link>
-            })}
+    const NavItem = ({ href, icon, text }) => {
+        return <Link className={`flex align-middle justify-center gap-2 py-2 text-tertiary hover:text-primary group-hover:justify-start group-hover:pl-3 transition-all duration-200 ease-out`}
+            href={href}>
+            {icon}
+            <span className='text-sm w-0 hidden whitespace-nowrap group-hover:block'>{text}</span>
+        </Link>
+    }
+
+    return <aside className="bg-zinc-950 w-16 px-4 py-8 border-r border-tertiary group hover:w-72 transition-all duration-200 ease-out">
+        <nav className='flex flex-col gap-7'>
+            <div className='flex flex-col gap-3'>
+                <h6 className='text-xs font-light tracking-widest text-slate-100/70 pl-1 invisible whitespace-nowrap group-hover:visible'>ORDENS DE COMPRA</h6>
+                <NavItem {...Tabs.CadastrarCompra} />
+                <NavItem {...Tabs.BuscarCompra} />
+                <NavItem {...Tabs.RegistrarTroca} />
+                <NavItem {...Tabs.RegistrarDevolucao} />
+            </div>
+            <div className='flex flex-col gap-3'>
+                <h6 className='text-xs font-light tracking-widest text-slate-100/70 pl-1 invisible whitespace-nowrap group-hover:visible'>CADASTROS</h6>
+                <NavItem {...Tabs.CadastrarProduto} />
+                <NavItem {...Tabs.CadastrarFornecedor} />
+            </div>
+            <div className='flex flex-col gap-3'>
+                <h6 className='text-xs font-light tracking-widest text-slate-100/70 pl-1 invisible whitespace-nowrap group-hover:visible'>ESTATÍSTICAS</h6>
+                <NavItem {...Tabs.LucroMensal} />
+                <NavItem {...Tabs.GiroEstoque} />
+            </div>
         </nav>
     </aside>
 }

@@ -7,6 +7,11 @@ module.exports = {
   ],
   theme: {
     extend: {
+      colors: {
+        primary: '#f0b10c',
+        secondary: '#1c0b35',
+        tertiary: '#a230bc'
+      },
       flexGrow: {
         2: '2',
         3: '3',

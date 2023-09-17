@@ -1,8 +1,6 @@
 export const initialUser = {
     email: '',
-    nome: '',
-    senha: '',
-    cargo: ''
+    nome: ''
 }
 
 export const reducerUser = (state, action) => {
@@ -10,12 +8,9 @@ export const reducerUser = (state, action) => {
         case 'UPDATE_USER':
             return Object.assign(state, action.payload)
         case 'LOGOUT':
-            LoginService.Logout()
             return {
                 email: '',
                 nome: '',
-                senha: '',
-                cargo: ''
             }
         default:
             return state
