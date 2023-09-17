@@ -8,6 +8,7 @@ import { LineChart } from 'lucide-react';
 import { PackageSearch } from 'lucide-react';
 import { ShoppingCart } from 'lucide-react';
 import { Undo2 } from 'lucide-react';
+import { LogOut } from 'lucide-react';
 import Link from 'next/link'
 
 export default function SideMenu() {
@@ -52,6 +53,11 @@ export default function SideMenu() {
             text: 'Registrar Devolução',
             icon: <Undo2 height={20} width={20} />,
             href: '/registrar_devolucao'
+        },
+        Logout: {
+            text: 'Logout',
+            icon: <LogOut height={20} width={20} />,
+            href: '/login'
         }
     }
 
@@ -69,8 +75,8 @@ export default function SideMenu() {
                 <h6 className='text-xs font-light tracking-widest text-slate-100/70 pl-1 invisible whitespace-nowrap group-hover:visible'>ORDENS DE COMPRA</h6>
                 <NavItem {...Tabs.CadastrarCompra} />
                 <NavItem {...Tabs.BuscarCompra} />
-                <NavItem {...Tabs.RegistrarTroca} />
-                <NavItem {...Tabs.RegistrarDevolucao} />
+                {/* <NavItem {...Tabs.RegistrarTroca} />
+                <NavItem {...Tabs.RegistrarDevolucao} /> */}
             </div>
             <div className='flex flex-col gap-3'>
                 <h6 className='text-xs font-light tracking-widest text-slate-100/70 pl-1 invisible whitespace-nowrap group-hover:visible'>CADASTROS</h6>
@@ -81,6 +87,10 @@ export default function SideMenu() {
                 <h6 className='text-xs font-light tracking-widest text-slate-100/70 pl-1 invisible whitespace-nowrap group-hover:visible'>ESTATÍSTICAS</h6>
                 <NavItem {...Tabs.LucroMensal} />
                 <NavItem {...Tabs.GiroEstoque} />
+            </div>
+            <div className='flex flex-col gap-3 mt-12'>
+                <h6 className='text-xs font-light tracking-widest text-slate-100/70 pl-1 invisible whitespace-nowrap group-hover:visible'>CONTA</h6>
+                <NavItem {...Tabs.Logout} />
             </div>
         </nav>
     </aside>

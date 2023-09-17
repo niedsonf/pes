@@ -25,6 +25,11 @@ module.exports = {
         '4/7': '57.1428571%',
         '5/7': '71.4285714%',
         '6/7': '85.7142857%',
+      },
+      boxShadow: {
+        '1': `0 0 56px 0px var(--color-secondary),
+        0 0 16px 0px var(--color-tertiary)
+        `,
       }
     },
   },
